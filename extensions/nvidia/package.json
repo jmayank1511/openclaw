@@ -4,6 +4,10 @@
   "private": true,
   "description": "OpenClaw NVIDIA provider plugin",
   "type": "module",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0"
+  },
   "devDependencies": {
     "@openclaw/plugin-sdk": "workspace:*"
   },
