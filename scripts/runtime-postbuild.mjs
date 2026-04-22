@@ -31,6 +31,20 @@ export const STATIC_EXTENSION_ASSETS = [
     src: "extensions/diffs/assets/viewer-runtime.js",
     dest: "dist/extensions/diffs/assets/viewer-runtime.js",
   },
+  // Riva gRPC proto files for the nvidia extension — the hashed bundle lands in
+  // dist/ so proto-loader resolves them relative to dist/proto/.
+  {
+    src: "extensions/nvidia/proto/riva/proto/riva_asr.proto",
+    dest: "dist/proto/riva/proto/riva_asr.proto",
+  },
+  {
+    src: "extensions/nvidia/proto/riva/proto/riva_audio.proto",
+    dest: "dist/proto/riva/proto/riva_audio.proto",
+  },
+  {
+    src: "extensions/nvidia/proto/riva/proto/riva_tts.proto",
+    dest: "dist/proto/riva/proto/riva_tts.proto",
+  },
 ];
 
 export function listStaticExtensionAssetOutputs(params = {}) {
