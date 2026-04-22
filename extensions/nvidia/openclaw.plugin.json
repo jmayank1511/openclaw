@@ -27,6 +27,10 @@
       "cliDescription": "NVIDIA API key"
     }
   ],
+  "contracts": {
+    "speechProviders": ["nvidia"],
+    "realtimeTranscriptionProviders": ["nvidia"]
+  },
   "configSchema": {
     "type": "object",
     "additionalProperties": false,
