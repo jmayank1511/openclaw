@@ -34,10 +34,10 @@ export async function parakeetTdtRecognize(params: ParakeetTdtRecognizeParams): 
       {
         config: {
           encoding: params.encoding,
-          sample_rate_hertz: params.sampleRateHz,
-          language_code: params.languageCode,
-          max_alternatives: 1,
-          enable_automatic_punctuation: true,
+          sampleRateHertz: params.sampleRateHz,
+          languageCode: params.languageCode,
+          maxAlternatives: 1,
+          enableAutomaticPunctuation: true,
         },
         audio: params.audio,
       },

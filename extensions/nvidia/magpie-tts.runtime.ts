@@ -36,11 +36,11 @@ export async function magpieSynthesize(params: MagpieParams): Promise<Buffer> {
   const metadata = makeNvcfMetadata(params.apiKey, params.functionId);
   const request: TtsRequest = {
     text: params.text,
-    language_code: params.language,
+    languageCode: params.language,
     encoding: params.encoding,
-    sample_rate_hz: params.sampleRateHz,
-    voice_name: params.voice,
-  } as unknown as TtsRequest;
+    sampleRateHz: params.sampleRateHz,
+    voiceName: params.voice,
+  };
 
   return new Promise((resolve, reject) => {
     client.Synthesize(

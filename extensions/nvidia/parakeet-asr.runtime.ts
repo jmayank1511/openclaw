@@ -12,7 +12,7 @@ type StreamingCall = {
 type StreamingResponse = {
   results: Array<{
     alternatives: Array<{ transcript: string }>;
-    is_final: boolean;
+    isFinal: boolean;
   }>;
 };
 
@@ -39,15 +39,15 @@ export class ParakeetStreamingSession {
     this.call = client.StreamingRecognize(metadata);
 
     this.call.write({
-      streaming_config: {
+      streamingConfig: {
         config: {
           encoding: this.config.encoding,
-          sample_rate_hertz: this.config.sampleRateHz,
-          language_code: this.config.languageCode,
-          enable_automatic_punctuation: true,
-          max_alternatives: 1,
+          sampleRateHertz: this.config.sampleRateHz,
+          languageCode: this.config.languageCode,
+          enableAutomaticPunctuation: true,
+          maxAlternatives: 1,
         },
-        interim_results: true,
+        interimResults: true,
       },
     });
 
@@ -57,7 +57,7 @@ export class ParakeetStreamingSession {
         if (!text) {
           continue;
         }
-        if (result.is_final) {
+        if (result.isFinal) {
           this.config.callbacks.onTranscript?.(text);
         } else {
           this.config.callbacks.onPartial?.(text);
@@ -81,7 +81,7 @@ export class ParakeetStreamingSession {
     if (!this._connected || !this.call) {
       return;
     }
-    this.call.write({ audio_content: audio });
+    this.call.write({ audioContent: audio });
   }
 
   close(): void {
