@@ -35,6 +35,9 @@ enum AudioEncoding {
     // 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
     MULAW = 3;
 
+    // OGG/Opus container with Opus-encoded audio.
+    OGGOPUS = 4;
+
     // 8-bit samples that compand 13-bit audio samples using G.711 PCMU/a-law.
     ALAW = 20;
 }
