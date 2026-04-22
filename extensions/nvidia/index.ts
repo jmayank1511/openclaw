@@ -1,4 +1,5 @@
 import { defineSingleProviderPluginEntry } from "openclaw/plugin-sdk/provider-entry";
+import { nvidiaMediaUnderstandingProvider } from "./audio-transcription-provider.js";
 import { buildNvidiaProvider } from "./provider-catalog.js";
 import { buildNvidiaRealtimeTranscriptionProvider } from "./realtime-transcription-provider.js";
 import { buildNvidiaSpeechProvider } from "./speech-provider.js";
@@ -21,5 +22,6 @@ export default defineSingleProviderPluginEntry({
   register(api) {
     api.registerSpeechProvider(buildNvidiaSpeechProvider());
     api.registerRealtimeTranscriptionProvider(buildNvidiaRealtimeTranscriptionProvider());
+    api.registerMediaUnderstandingProvider(nvidiaMediaUnderstandingProvider);
   },
 });

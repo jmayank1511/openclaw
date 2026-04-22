@@ -29,7 +29,8 @@
   ],
   "contracts": {
     "speechProviders": ["nvidia"],
-    "realtimeTranscriptionProviders": ["nvidia"]
+    "realtimeTranscriptionProviders": ["nvidia"],
+    "mediaUnderstandingProviders": ["nvidia"]
   },
   "configSchema": {
     "type": "object",
