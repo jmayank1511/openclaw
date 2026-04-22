@@ -1,14 +1,24 @@
-import { definePluginEntry } from "openclaw/plugin-sdk/plugin-entry";
+import { defineSingleProviderPluginEntry } from "openclaw/plugin-sdk/provider-entry";
 import { buildNvidiaProvider } from "./provider-catalog.js";
-import { buildNvidiaSpeechProvider } from "./speech-provider.js";
 import { buildNvidiaRealtimeTranscriptionProvider } from "./realtime-transcription-provider.js";
+import { buildNvidiaSpeechProvider } from "./speech-provider.js";
 
-export default definePluginEntry({
-  id: "nvidia",
+const PROVIDER_ID = "nvidia";
+
+export default defineSingleProviderPluginEntry({
+  id: PROVIDER_ID,
   name: "NVIDIA Provider",
   description: "Bundled NVIDIA provider plugin",
+  provider: {
+    label: "NVIDIA",
+    docsPath: "/providers/nvidia",
+    envVars: ["NVIDIA_API_KEY"],
+    auth: [],
+    catalog: {
+      buildProvider: buildNvidiaProvider,
+    },
+  },
   register(api) {
-    api.registerProvider(buildNvidiaProvider());
     api.registerSpeechProvider(buildNvidiaSpeechProvider());
     api.registerRealtimeTranscriptionProvider(buildNvidiaRealtimeTranscriptionProvider());
   },

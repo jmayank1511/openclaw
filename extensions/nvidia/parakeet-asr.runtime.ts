@@ -54,7 +54,9 @@ export class ParakeetStreamingSession {
     this.call.on("data", (response) => {
       for (const result of response.results ?? []) {
         const text = result.alternatives?.[0]?.transcript ?? "";
-        if (!text) continue;
+        if (!text) {
+          continue;
+        }
         if (result.is_final) {
           this.config.callbacks.onTranscript?.(text);
         } else {
@@ -76,7 +78,9 @@ export class ParakeetStreamingSession {
   }
 
   sendAudio(audio: Buffer): void {
-    if (!this._connected || !this.call) return;
+    if (!this._connected || !this.call) {
+      return;
+    }
     this.call.write({ audio_content: audio });
   }
 

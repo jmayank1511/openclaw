@@ -1,9 +1,7 @@
 import type {
   SpeechProviderPlugin,
   SpeechSynthesisRequest,
-  SpeechSynthesisResult,
   SpeechTelephonySynthesisRequest,
-  SpeechTelephonySynthesisResult,
 } from "openclaw/plugin-sdk/speech";
 import {
   DEFAULT_LANGUAGE,
@@ -50,15 +48,14 @@ export function buildNvidiaSpeechProvider(): SpeechProviderPlugin {
     voices: KNOWN_VOICES,
     models: ["magpie-tts-multilingual", "magpie-tts-zeroshot"],
 
-    resolveConfig: ({ rawConfig }) =>
-      normalizeNvidiaTtsConfig(rawConfig as Record<string, unknown>),
+    resolveConfig: ({ rawConfig }) => normalizeNvidiaTtsConfig(rawConfig),
 
     isConfigured: ({ providerConfig }) => {
       const c = normalizeNvidiaTtsConfig(providerConfig as Record<string, unknown>);
       return Boolean(c.apiKey);
     },
 
-    synthesize: async (req: SpeechSynthesisRequest): Promise<SpeechSynthesisResult> => {
+    synthesize: async (req: SpeechSynthesisRequest) => {
       const c = normalizeNvidiaTtsConfig(req.providerConfig as Record<string, unknown>);
       const { magpieSynthesize } = await import("./magpie-tts.runtime.js");
       const pcm = await magpieSynthesize({
@@ -79,9 +76,7 @@ export function buildNvidiaSpeechProvider(): SpeechProviderPlugin {
       };
     },
 
-    synthesizeTelephony: async (
-      req: SpeechTelephonySynthesisRequest,
-    ): Promise<SpeechTelephonySynthesisResult> => {
+    synthesizeTelephony: async (req: SpeechTelephonySynthesisRequest) => {
       const c = normalizeNvidiaTtsConfig(req.providerConfig as Record<string, unknown>);
       const { magpieSynthesize } = await import("./magpie-tts.runtime.js");
       const pcm = await magpieSynthesize({
