@@ -75,7 +75,7 @@ export const nvidiaMediaUnderstandingProvider: MediaUnderstandingProvider = {
       audio,
       encoding,
       sampleRateHz,
-      languageCode: req.language ?? "en-US",
+      languageCode: req.language || "en-US",
       timeoutMs: req.timeoutMs,
     });
     return { text, model: "nvidia/parakeet-tdt-1.1b-asr" };
