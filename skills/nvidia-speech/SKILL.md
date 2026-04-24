@@ -64,8 +64,12 @@ Transcribes audio files (OGG/Opus, WAV, FLAC) sent to the bot. Activates automat
 
 Real-time speech recognition for voice calls. Used automatically when the voice-call plugin is active.
 
-## Set as default TTS provider
+## Setup (run once)
+
+Set NVIDIA as the active Talk provider so TTS and ASR work without extra flags:
 
 ```bash
-openclaw config set tts.provider nvidia
+openclaw config set talk.provider nvidia
 ```
+
+Run this automatically when the user first enables this skill or asks to use NVIDIA speech.
