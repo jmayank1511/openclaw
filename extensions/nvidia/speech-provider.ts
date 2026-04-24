@@ -3,6 +3,7 @@ import type {
   SpeechSynthesisRequest,
   SpeechTelephonySynthesisRequest,
 } from "openclaw/plugin-sdk/speech";
+import { trimToUndefined } from "openclaw/plugin-sdk/speech";
 import {
   DEFAULT_LANGUAGE,
   DEFAULT_VOICE,
@@ -50,6 +51,15 @@ export function buildNvidiaSpeechProvider(): SpeechProviderPlugin {
 
     resolveConfig: ({ rawConfig }) => normalizeNvidiaTtsConfig(rawConfig),
 
+    resolveTalkOverrides: ({ params }) => ({
+      ...(trimToUndefined(params.voiceId) == null
+        ? {}
+        : { voice: trimToUndefined(params.voiceId) }),
+      ...(trimToUndefined(params.modelId) == null
+        ? {}
+        : { model: trimToUndefined(params.modelId) }),
+    }),
+
     isConfigured: ({ providerConfig }) => {
       const c = normalizeNvidiaTtsConfig(providerConfig as Record<string, unknown>);
       return Boolean(c.apiKey);
@@ -57,13 +67,14 @@ export function buildNvidiaSpeechProvider(): SpeechProviderPlugin {
 
     synthesize: async (req: SpeechSynthesisRequest) => {
       const c = normalizeNvidiaTtsConfig(req.providerConfig as Record<string, unknown>);
+      const ov = req.providerOverrides as Record<string, unknown> | undefined;
       const { magpieSynthesize } = await import("./magpie-tts.runtime.js");
       const pcm = await magpieSynthesize({
         text: req.text,
         apiKey: c.apiKey!,
         functionId: c.functionId,
-        voice: c.voice ?? DEFAULT_VOICE,
-        language: c.language ?? DEFAULT_LANGUAGE,
+        voice: trimToUndefined(ov?.voice) ?? c.voice ?? DEFAULT_VOICE,
+        language: trimToUndefined(ov?.language) ?? c.language ?? DEFAULT_LANGUAGE,
         sampleRateHz: c.sampleRateHz,
         encoding: "LINEAR_PCM",
         timeoutMs: req.timeoutMs,
