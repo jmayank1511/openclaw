@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: MIT
+
 import type {
   RealtimeTranscriptionProviderPlugin,
   RealtimeTranscriptionSession,
@@ -58,7 +61,9 @@ export function buildNvidiaRealtimeTranscriptionProvider(): RealtimeTranscriptio
       return Boolean(c.apiKey);
     },
 
-    createSession: (req: RealtimeTranscriptionSessionCreateRequest): RealtimeTranscriptionSession => {
+    createSession: (
+      req: RealtimeTranscriptionSessionCreateRequest,
+    ): RealtimeTranscriptionSession => {
       const c = normalizeNvidiaAsrConfig(req.providerConfig as Record<string, unknown>);
       return new NvidiaRealtimeTranscriptionSession(c, req);
     },

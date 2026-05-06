@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: MIT
+
 import type { MediaUnderstandingProvider } from "openclaw/plugin-sdk/media-understanding";
 import { NVCF_TDT_ASR_DEFAULT_FUNCTION_ID } from "./nvidia-speech-config.js";
 

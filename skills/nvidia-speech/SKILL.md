@@ -14,6 +14,11 @@ metadata:
   }
 ---
 
+<!--
+SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+SPDX-License-Identifier: MIT
+-->
+
 # NVIDIA Speech
 
 NVIDIA speech AI running on NVCF-hosted NIMs — no local GPU required.

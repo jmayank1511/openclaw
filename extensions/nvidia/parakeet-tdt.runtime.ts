@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: MIT
+
 import { createAsrClient, makeNvcfMetadata } from "./grpc-client.runtime.js";
 
 type RecognizeResponse = {

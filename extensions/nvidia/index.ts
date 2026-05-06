@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: MIT
+
 import { defineSingleProviderPluginEntry } from "openclaw/plugin-sdk/provider-entry";
 import { nvidiaMediaUnderstandingProvider } from "./audio-transcription-provider.js";
 import { buildNvidiaProvider } from "./provider-catalog.js";

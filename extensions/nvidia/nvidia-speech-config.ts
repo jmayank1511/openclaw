@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+// SPDX-License-Identifier: MIT
+
 import { normalizeResolvedSecretInputString } from "openclaw/plugin-sdk/secret-input";
 import { asObject, asFiniteNumber, trimToUndefined } from "openclaw/plugin-sdk/speech";
 
